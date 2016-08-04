@@ -5,6 +5,7 @@
 import unittest
 import Arrays_And_Strings
 import Linked_Lists
+import Stacks_And_Queues
 
 class Test_Arrays_And_Strings(unittest.TestCase):
 	longMessage = True
@@ -158,6 +159,77 @@ class Test_Linked_Lists(unittest.TestCase):
 		for key, value in test_cases.items():
 			with self.subTest(key=key, value=value):
 				self.assertEqual(key, Linked_Lists.exercise_8(value))
+
+
+class Test_Stacks_And_Queues(unittest.TestCase):
+	longMessage = True
+
+	def test_exercise_1_and_2(self):
+		stack_a = Stacks_And_Queues.exercise_1_and_2()
+		stack_b = Stacks_And_Queues.exercise_1_and_2()
+		stack_c = Stacks_And_Queues.exercise_1_and_2()
+
+		stack_a.push(1)
+		stack_b.push(2)
+		stack_c.push(3)
+
+		a = stack_a.pop()
+		b = stack_b.pop()
+		c = stack_c.pop()
+
+		test_cases = {
+			1 : a,
+			2 : b,
+			3 : c
+		}
+
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, value)
+		self.assertEqual(None, stack_a.get_minimum())
+
+	def test_exercise_3(self):
+		stacks = Stacks_And_Queues.exercise_3(2)
+
+		stacks.push(1)
+		stacks.push(2)
+		stacks.push("a")
+
+		first_pop = stacks.pop_at(0)
+
+		self.assertEqual(2, first_pop)
+
+	def test_exercise_4(self):
+		queue = Stacks_And_Queues.exercise_4()
+
+		queue.add(1)
+		queue.add(2)
+		result = queue.remove()
+
+		self.assertEqual(1, result)
+
+	def test_exercise_5(self):
+		test_cases = {
+			(4,3,2,1) : [4,3,2,1],
+			(4,3,2,1) : [1,2,3,4]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(list(key), Stacks_And_Queues.exercise_5(value))
+
+	def test_exercise_6(self):
+		shelter = Stacks_And_Queues.exercise_6()
+
+		shelter.enqueue("dog")
+		shelter.enqueue("cat")
+		shelter.enqueue("cat")
+
+		animal = shelter.dequeue_any()
+		dog = shelter.dequeue_dog()
+
+		self.assertEqual("cat", animal)
+		self.assertEqual("dog", dog)
+
 
 if __name__ == '__main__':
 	unittest.main()

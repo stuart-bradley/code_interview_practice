@@ -1,4 +1,4 @@
-# Cracking the coding interview - C3 - Stack and Queues
+# Cracking the coding interview - C3 - Stacks and Queues
 # Stuart Bradley
 # 04-08-2016
 

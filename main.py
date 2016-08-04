@@ -6,6 +6,7 @@ import unittest
 import Arrays_And_Strings
 import Linked_Lists
 import Stacks_And_Queues
+import Trees_And_Graphs
 
 class Test_Arrays_And_Strings(unittest.TestCase):
 	longMessage = True
@@ -230,6 +231,117 @@ class Test_Stacks_And_Queues(unittest.TestCase):
 		self.assertEqual("cat", animal)
 		self.assertEqual("dog", dog)
 
+class Test_Trees_And_Graphs(unittest.TestCase):
+	longMessage = True
+
+	def test_exercise_1(self):
+		graph = {
+			0 : [1,2],
+			1 : [3],
+			2 : [1],
+			3 : [],
+			4 : [3]
+		}
+
+		test_cases = {
+			True : [graph, 0, 3],
+			False : [graph, 0, 4]
+		}
+
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_1_DFS(value[0],value[1],value[2]))
+				self.assertEqual(key, Trees_And_Graphs.exercise_1_BFS(value[0],value[1],value[2]))
+
+	def test_exercise_2(self):
+		test_cases = {
+			"12345": [1,2,3,4,5]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_2(value).traverse_inorder())
+
+	def test_exercise_3(self):
+		test_cases = [
+			[[[3],[2,4],[1,5]], {1: [], 2: [1], 3: [2, 4], 4: [5], 5: []}]
+		]
+
+		for test_case in test_cases:
+			with self.subTest(key=test_case[0], value=test_case[1]):
+				self.assertEqual(test_case[0], Trees_And_Graphs.exercise_3(test_case[1]))
+
+	def test_exercise_4(self):
+		test_cases = {
+			True: {1: [], 2: [1], 3: [2, 4], 4: [5], 5: []},
+			False: {1: [], 2: [1], 3: [2, 4], 4: [5], 5: [6], 6: [7], 7:[]}
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_4(value))
+
+	def test_exercise_5(self):
+		test_cases = {
+			True: {1: [], 2: [1], 3: [2, 4], 4: [3.2,5], 5: [], 3.2:[]},
+			False: {20: [], 2: [20], 3: [2, 4], 4: [3.2,5], 5: [], 3.2:[]}
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_5(value))
+
+	def test_exercise_6(self):
+		test_cases = {
+			2: [{1: [], 2: [1], 3: [2, 4], 4: [3.2,5], 5: [], 3.2:[]},1],
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_6(value[0],value[1]))
+
+	def test_exercise_7(self):
+		test_cases = {
+			(1,2,3) : [[1,2,3],[[1,2],[2,3],[1,3]]],
+			(5,6,1,2,4,3) : [[1,2,3,4,5,6],[[1,4],[6,2],[2,4],[6,1],[4,3]]]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(list(key), Trees_And_Graphs.exercise_7(value[0],value[1]))
+
+	def test_exercise_8(self):
+		test_cases = [
+			[3, {1: [], 2: [1], 3: [2, 4], 4: [5], 5: []},1,5]
+		]
+
+		for test_case in test_cases:
+			with self.subTest(key=test_case[0], value=test_case[1]):
+				self.assertEqual(test_case[0], Trees_And_Graphs.exercise_8(test_case[1],test_case[2],test_case[3]))
+
+	def test_exercise_9(self):
+		test_cases = {
+			((2,1,3),(2,3,1)) : {1:[],2:[1,3],3:[3]},
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				key = [list(x) for x in key]
+				self.assertEqual(key, Trees_And_Graphs.exercise_9(value))
+
+	def test_exercise_10(self):
+		test_cases = {
+			True : [{1:[2,3],2:[4,5],3:[],4:[],5:[]},{2:[4,5],4:[],5:[]}],
+			False : [{1:[2,3],2:[4,5],3:[],4:[],5:[]},{6:[7,8],7:[],8:[]}]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_10(value[0],value[1]))
+
+	# Exercise 11 is a random test, and as such can be easily tested. 
+	# However, with the tree representation used, is very trival.
+
+	def test_exercise_12(self):
+		test_cases = {
+			2 : [{1:[[],0],2:[[3,5],0],3:[[1],0],4:[[2,6],0],5:[[],0],6:[[],0]},10]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Trees_And_Graphs.exercise_12(value[0],value[1]))
 
 if __name__ == '__main__':
 	unittest.main()

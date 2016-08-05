@@ -7,6 +7,7 @@ import Arrays_And_Strings
 import Linked_Lists
 import Stacks_And_Queues
 import Trees_And_Graphs
+import Bit_Manipulation
 
 class Test_Arrays_And_Strings(unittest.TestCase):
 	longMessage = True
@@ -342,6 +343,72 @@ class Test_Trees_And_Graphs(unittest.TestCase):
 		for key, value in test_cases.items():
 			with self.subTest(key=key, value=value):
 				self.assertEqual(key, Trees_And_Graphs.exercise_12(value[0],value[1]))
+
+class Test_Bit_Manipulation(unittest.TestCase):
+	longMessage = True
+
+	def test_exercise_1(self):
+		test_cases = {
+			10001001100 : [10000000000, 10011,2,6]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Bit_Manipulation.exercise_1(value[0], value[1], value[2], value[3]))
+
+	def test_exercise_2(self):
+		test_cases = {
+			".1011100001010001111010111000010100011110101110000101" : 0.72
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Bit_Manipulation.exercise_2(value))
+
+	def test_exercise_3(self):
+		test_cases = {
+			8 : "11011101111",
+			6 : "110111001111"
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Bit_Manipulation.exercise_3(value))
+
+	def test_exercise_4(self):
+		test_cases = {
+			('10100101', '10101001') : "10100110",
+			('-11111111', '101111111') : "11111111"
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Bit_Manipulation.exercise_4(value))
+
+	# Exercise 5 happens on paper.
+	# The answer is that the code checks if n is a power of 2.
+
+	def test_exercise_6(self):
+		test_cases = {
+			2 : [29,15]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Bit_Manipulation.exercise_6(value[0],value[1]))
+
+	def test_exercise_7(self):
+		test_cases = {
+			"1010" : "0101"
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Bit_Manipulation.exercise_7(value))
+
+	def test_exercise_8(self):
+		screen = [0] * 16
+		result_screen = screen
+		result_screen[0] = 1
+		result_screen[1] = 1
+		result_screen[2] = 1
+
+
+		self.assertEqual(result_screen, Bit_Manipulation.exercise_8(screen,8,0,2,0))
 
 if __name__ == '__main__':
 	unittest.main()

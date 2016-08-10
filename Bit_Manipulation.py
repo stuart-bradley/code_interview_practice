@@ -80,7 +80,6 @@ def exercise_6(n1, n2):
 def exercise_7(sequence):
 	sequence = list(sequence)
 	for i in range(0,len(sequence) - 1,2):
-		print(i)
 		tmp = sequence[i]
 		sequence[i] = sequence[i+1]
 		sequence[i+1] = tmp

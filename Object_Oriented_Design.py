@@ -507,7 +507,7 @@ class File:
 # Hash Table
 class Ex12_Hash_Table:
 	def __init__(self):
-		self.table = [[None for x in range(size)] for y in range(size)] 
+		self.table = [[None for x in range(10)] for y in range(10)] 
 
 	def hash_function(self, data):
 		return int(data)

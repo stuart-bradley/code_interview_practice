@@ -3,12 +3,14 @@
 # 02-08-2016
 
 import unittest
+
 import Arrays_And_Strings
 import Linked_Lists
 import Stacks_And_Queues
 import Trees_And_Graphs
 import Bit_Manipulation
 import Object_Oriented_Design
+import Recursion_And_Dynamic_Programming
 
 class Test_Arrays_And_Strings(unittest.TestCase):
 	longMessage = True
@@ -521,5 +523,153 @@ class Test_Object_Oriented_Design(unittest.TestCase):
 
 		self.assertEqual("/root/Level 1/Data", path)
 
+	def test_exercise_12(self):
+		hash_table = Object_Oriented_Design.Ex12_Hash_Table()
+		hash_table.add_to_table(1)
+		self.assertEqual(1, hash_table.retrieve(1))
+
+class Test_Recursion_And_Dynamic_Programming(unittest.TestCase):
+	longMessage = True
+
+	def test_exercise_1(self):
+		test_cases = {
+			1 : 0,
+			1 : 1,
+			2 : 2,
+			4 : 3
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Recursion_And_Dynamic_Programming.exercise_1(value))
+
+	def test_exercise_2(self):
+		test_cases = {
+			(0,1,2,5,8) : [{0:[1,3],1:[2],2:[5],3:[4,6],4:[7],5:[8],6:[7],7:[],8:[]},0,8],
+			() : [{0:[1,3],1:[2],2:[5],3:[4,6],4:[7],5:[],6:[7],7:[],8:[]},0,8],
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(list(key), Recursion_And_Dynamic_Programming.exercise_2(value[0],value[1],value[2]))
+
+	def test_exercise_3(self):
+		test_cases = {
+			2 : [-1,0,2],
+			2 : [1,2,2]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Recursion_And_Dynamic_Programming.exercise_3(value))
+
+	def test_exercise_4(self):
+		test_cases = {
+			(1,2) : [[1],[2]],
+			(1,2,3) : [[1],[2],[3],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2]]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(value, Recursion_And_Dynamic_Programming.exercise_4(list(key)))
+
+	def test_exercise_5(self):
+		test_cases = {
+			2 : [1,2],
+			25 : [5,5]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Recursion_And_Dynamic_Programming.exercise_5(value[0],value[1]))
+
+	def test_exercise_6(self):
+		test_cases = {
+			2 : [1,2],
+			25 : [5,5]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Recursion_And_Dynamic_Programming.exercise_5(value[0],value[1]))
+
+	def test_exercise_7(self):
+		source = [4,3,2,1]
+		target = []
+		helper = []
+		Recursion_And_Dynamic_Programming.exercise_6(len(source),source,helper,target)
+		self.assertEqual([4,3,2,1], target)
+
+	def test_exercise_7(self):
+		test_cases = {
+			"te" : ["t","e"],
+			"tes" : ["t","e","s","te","ts","et","es","st","se"]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(value, Recursion_And_Dynamic_Programming.exercise_7(key))
+
+	def test_exercise_8(self):
+		test_cases = {
+			"tt" : ["t", "t"],
+			"tts" : ["t","t","s","tt","ts","st"]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(value, Recursion_And_Dynamic_Programming.exercise_8(key))
+
+	def test_exercise_9(self):
+
+		test_cases = {
+			3 : ["((()))", "(()())", "(())()", "()(())","()()()"],
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(sorted(value), sorted(Recursion_And_Dynamic_Programming.exercise_9(key)))
+
+	def test_exercise_10(self):
+		screen = [
+			["green","green","black","black"],
+			["green","green","black","black"],
+			["black","black","black","black"],
+			["black","black","black","black"]
+		]
+
+		screen_filled = [
+			["red","red","black","black"],
+			["red","red","black","black"],
+			["black","black","black","black"],
+			["black","black","black","black"]
+		]
+		self.assertEqual(screen_filled, Recursion_And_Dynamic_Programming.exercise_10(screen, (0,0), "red"))
+
+	def test_exercise_11(self):
+		test_cases = {
+			1 : 1,
+			1 : 2,
+			2 : 5,
+			9 : 10
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, len(Recursion_And_Dynamic_Programming.exercise_11(value)))
+
+	def test_exercise_12(self):
+		self.assertEqual(92, Recursion_And_Dynamic_Programming.exercise_12(8))
+
+	def test_exercise_13(self):
+		test_cases = {
+			6 : [(1,1,1),(3,3,3),(2,2,2)],
+			4  : [(1,1,1),(3,3,3),(1,2,2)]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Recursion_And_Dynamic_Programming.exercise_13(value))
+
+	def test_exercise_14(self):
+		test_cases = {
+			2 : ["1^0|0|1", False]
+		}
+		for key, value in test_cases.items():
+			with self.subTest(key=key, value=value):
+				self.assertEqual(key, Recursion_And_Dynamic_Programming.exercise_14(value[0], value[1]))
+
 if __name__ == '__main__':
 	unittest.main()
+
+
+			
